@@ -19,6 +19,7 @@ if [ "$(id -u)" = "0" ]; then
   mkdir -p "$DATA_DIR"
   chown -R nextjs "$DATA_DIR"
   chmod 700 "$DATA_DIR"
+  export HOME=/nonexistent USER=nextjs
   exec setpriv --reuid=nextjs --regid=nogroup --init-groups /app/docker-entrypoint.sh
 fi
 exec /app/docker-entrypoint.sh
