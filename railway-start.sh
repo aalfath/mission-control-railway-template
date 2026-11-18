@@ -7,9 +7,7 @@ set -e
 # the deployer set in MC_ALLOWED_HOSTS (for example a custom domain).
 hosts="${MC_ALLOWED_HOSTS:-}"
 for h in "${RAILWAY_PUBLIC_DOMAIN:-}" "${RAILWAY_PRIVATE_DOMAIN:-}" healthcheck.railway.app; do
-  if [ -n "$h" ] && [ -n "${RAILWAY_ENVIRONMENT_ID:-}${RAILWAY_PUBLIC_DOMAIN:-}${MC_ALLOWED_HOSTS:-}" ]; then
-    hosts="${hosts:+$hosts,}$h"
-  fi
+  [ -n "$h" ] && hosts="${hosts:+$hosts,}$h"
 done
 export MC_ALLOWED_HOSTS="$hosts"
 
