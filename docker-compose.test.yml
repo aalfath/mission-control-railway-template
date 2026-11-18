@@ -8,6 +8,7 @@ services:
       AUTH_USER: admin
       AUTH_PASS: ${AUTH_PASS:?set AUTH_PASS}
       MC_ALLOWED_HOSTS: localhost
+      MC_COOKIE_SECURE: "0"
     volumes:
       - mc-data:/app/.data
 volumes:

@@ -11,6 +11,9 @@ for h in "${RAILWAY_PUBLIC_DOMAIN:-}" "${RAILWAY_PRIVATE_DOMAIN:-}" healthcheck.
 done
 export MC_ALLOWED_HOSTS="$hosts"
 
+# Railway serves the app over HTTPS only.
+export MC_COOKIE_SECURE="${MC_COOKIE_SECURE:-1}"
+
 # No OpenClaw gateway is bundled: run in standalone mode unless told otherwise.
 export NEXT_PUBLIC_GATEWAY_OPTIONAL="${NEXT_PUBLIC_GATEWAY_OPTIONAL:-true}"
 
